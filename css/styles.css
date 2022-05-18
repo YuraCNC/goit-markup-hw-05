@@ -1,4 +1,7 @@
-/*=========================== наслідування =========================*/
+/*--------*/
+/*---------------- наслідування -----------------*/
+/*---------*/
+
 body {
    font-family: 'Roboto', sans-serif;
 }
@@ -23,9 +26,11 @@ img {
    --second-text-color: #757575;
    --mine-color: #212121;
 }
-/*=========================== наслідування =========================*/
 
-/*============== Скидання браузерних стилів ==============*/
+/*--------*/
+/*------------ Скидання браузерних стилів -----------------*/
+/*---------*/
+
 .list {
    list-style: none;
    padding: 0;
@@ -35,9 +40,11 @@ img {
 .link {
    text-decoration: none;
 }
-/*============== Скидання браузерних стилів ==============*/
 
-/*=========== Загальні налаштування для Flexbox. =============*/
+/*--------*/
+/*-------------- Загальні налаштування для Flexbox -----------------*/
+/*---------*/
+
 .section {
    padding-top: 94px;
    padding-bottom: 94px;
@@ -50,9 +57,11 @@ img {
    margin-right: auto;
    margin-left: auto;
 }
-/*========== Загальні налаштування для Flexbox. =============*/
 
-/*===============HEADER-START===============*/
+/*--------*/
+/*-------------- HEADER -----------------*/
+/*---------*/
+
 .header {
    border-bottom: 1px solid #ececec;
 }
@@ -62,7 +71,10 @@ img {
    align-items: center;
 }
 
-/*============== NAVIGATION-START ==============*/
+/*--------*/
+/*-------------- NAVIGATION-START -----------------*/
+/*---------*/
+
 .header-nav {
    display: flex;
    align-items: center;
@@ -125,12 +137,34 @@ color: var(--main-color);}*/
    color: var(--accent-color);
 }
 
-.menu > .current {
+.menu > .current-item {
    color: var(--accent-color);
 }
-/*============== NAVIGATION-END ==============*/
 
-/*============== contacts in header ==============*/
+.current-link {
+   position: relative;
+}
+
+.current-link::after {
+   content: '';
+   position: absolute;
+   bottom: -1px;
+   left: 50%;
+   width: 48px;
+   height: 4px;
+   transform: translateX(-50%);
+   background-color: var(--accent-color);
+   border-radius: 2px;
+}
+
+/*--------*/
+/*-------------- NAVIGATION-END -----------------*/
+/*---------*/
+
+/*--------*/
+/*-------------- contacts in header -----------------*/
+/*---------*/
+
 .header-list {
    display: flex;
    margin-left: auto;
@@ -171,10 +205,15 @@ color: var(--main-color);}*/
 .contact-number:focus {
    color: var(--accent-color);
 }
-/*====== contacts in header =======*/
-/*===============HEADER-END===============*/
 
-/*============== HERO-START ==============*/
+/*--------*/
+/*-------------- HEADER-END -----------------*/
+/*---------*/
+
+/*--------*/
+/*-------------- HERO-START-----------------*/
+/*---------*/
+
 .hero {
    padding: 200px 0px;
    background-color: #c4c4c4;
