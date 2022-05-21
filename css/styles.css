@@ -25,6 +25,8 @@ img {
    --the-second-color: #ffffff;
    --second-text-color: #757575;
    --mine-color: #212121;
+
+   --transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /*--------*/
@@ -114,6 +116,10 @@ img {
    line-height: 1.14;
    letter-spacing: 0.02em;
    color: var(--main-color);
+
+   transition-property: color;
+   transition-duration: 250ms;
+   transition-timing-function: var(--transition-timing-function);
 }
 
 /*альтернативний варіант з додатковим класом в посиланнях "menu-link" */
@@ -185,6 +191,10 @@ color: var(--main-color);}*/
    padding-top: 32px;
    padding-bottom: 32px;
    color: var(--second-text-color);
+
+   transition-property: color;
+   transition-duration: 250ms;
+   transition-timing-function: var(--transition-timing-function);
 }
 
 .icon-envelope,
@@ -240,9 +250,11 @@ color: var(--main-color);}*/
    text-transform: uppercase;
    color: var(--the-second-color);
 }
-/*============== Основний заголовок на сторінці ==============*/
 
-/* ============== modal button ==============*/
+/*--------*/
+/*--------------MODAL-----------------*/
+/*---------*/
+
 .modal-button {
    min-width: 200px;
    height: 50px;
@@ -255,19 +267,79 @@ color: var(--main-color);}*/
    letter-spacing: 0.06em;
    color: var(--the-second-color);
    background: var(--accent-color);
-   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
    border-radius: 4px;
    cursor: pointer;
+
+   transition: background-color 250ms var(--transition-timing-function),
+      box-shadow 250ms var(--transition-timing-function);
 }
 
 .modal-button:hover,
 .modal-button:focus {
    background-color: #188ce8;
+   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
-/*============== modal button ==============*/
+
+.backdrop {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.2);
+
+   z-index: 10;
+
+   transition: 300ms var(--transition-timing-function);
+}
+
+.backdrop.is-hidden {
+   visibility: hidden;
+   opacity: 0;
+   pointer-events: none;
+}
+
+.backdrop.is-hidden .modal {
+   transform: translate(-50%, -50%) scale(0.3);
+}
+
+.modal {
+   position: absolute;
+   width: 528px;
+   height: 581px;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%) scale(1);
+   transition: transform 300ms var(--transition-timing-function);
+
+   background: var(--the-second-color);
+   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+   border-radius: 4px;
+}
+
+.close-modal-btn {
+   position: absolute;
+   top: 8px;
+   right: 8px;
+   width: 30px;
+   height: 30px;
+   border: 1px solid rgba(0, 0, 0, 0.1);
+   border-radius: 50%;
+   background-color: var(--the-second-color);
+   cursor: pointer;
+
+   display: flex;
+   padding: 0;
+   align-items: center;
+   justify-content: center;
+}
+
 /* =================   HERO-END  ===================*/
 
-/* ============== Наши преимущества ==============*/
+/*--------*/
+/*--------------ADVANTAGES-----------------*/
+/*---------*/
+
 .visually-hidden {
    position: absolute;
    width: 1px;
@@ -356,11 +428,13 @@ color: var(--main-color);}*/
    margin-right: 0;
 }
 
+/* 1) обгорнув img div-ом і позиціонував відносно нього, а не самого зображення з розрахунком на те, що в майбутньому в li-шці можуть з'явитися додаткові елементи. Чи доречне таке рішення в цьому випадку?*/
+
 .desktop-apps,
 .mobile-apps,
 .design-solution {
    position: relative;
-   widows: 370px;
+   width: 370px;
    height: 294px;
 }
 
@@ -459,6 +533,12 @@ color: var(--main-color);}*/
    align-items: center;
    justify-content: center;
    fill: #afb1b8;
+
+   transition: background-color 250ms var(--transition-timing-function);
+}
+
+.social-icon {
+   transition: fill 250ms var(--transition-timing-function);
 }
 
 .social-link:hover,
@@ -476,7 +556,7 @@ color: var(--main-color);}*/
 }
 
 /*--------*/
-/*------------------- REGULARS CUSTOMER -----------------*/
+/*------------------- REGULARS CUSTOMERS -----------------*/
 /*---------*/
 
 .regular-customers {
@@ -506,6 +586,7 @@ color: var(--main-color);}*/
    fill: #afb1b8;
    border: 1px solid #afb1b8;
    border-radius: 4px;
+   transition: border-color 250ms var(--transition-timing-function), fill 250ms var(--transition-timing-function);
 }
 
 .regular-customer-link:hover,
@@ -552,6 +633,8 @@ color: var(--main-color);}*/
    line-height: 1.71;
    letter-spacing: 0.03em;
    color: var(--the-second-color);
+
+   transition: color 250ms var(--transition-timing-function);
 }
 
 .link_contact {
@@ -560,6 +643,8 @@ color: var(--main-color);}*/
    line-height: 1.71;
    letter-spacing: 0.03em;
    color: rgba(255, 255, 255, 0.6);
+
+   transition: color 250ms var(--transition-timing-function);
 }
 
 .link_geolocation:hover,
@@ -602,6 +687,8 @@ color: var(--main-color);}*/
    fill: var(--the-second-color);
    justify-content: center;
    align-items: center;
+
+   transition: background-color 250ms var(--transition-timing-function);
 }
 
 .social-link-in-footer:hover,
@@ -638,6 +725,9 @@ color: var(--main-color);}*/
    border-radius: 4px;
    border-style: none;
    cursor: pointer;
+
+   transition: background-color 250ms var(--transition-timing-function), color 250ms var(--transition-timing-function),
+      box-shadow 250ms var(--transition-timing-function);
 }
 
 .filter-btn {
@@ -678,12 +768,17 @@ color: var(--main-color);}*/
    margin-bottom: 0;
 }
 
+.link-card {
+   transition: box-shadow 250ms var(--transition-timing-function);
+}
+
 .link-card:hover,
 .link-card:focus {
    display: block;
    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
+/*---owerlay-----*/
 .wrapper {
    position: relative;
    width: 370px;
@@ -709,7 +804,7 @@ color: var(--main-color);}*/
 
    transform: translateY(100%);
    transition-duration: 250ms;
-   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+   transition-timing-function: var(--transition-timing-function);
 }
 
 .link-card:hover .owerlay-text,
